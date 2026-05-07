@@ -1,0 +1,64 @@
+name: Vendor Tree Validation
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  validate-vendor-tree:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Vendor Tree
+        uses: actions/checkout@v4
+
+      - name: Validate Required Directories
+        run: |
+          test -d proprietary || exit 1
+
+      - name: Validate Required Files
+        run: |
+          test -f Android.mk || exit 1
+          test -f BoardConfigVendor.mk || exit 1
+          test -f OP4C7D-vendor.mk || exit 1
+
+      - name: Validate Important Proprietary Directories
+        run: |
+          test -d proprietary/lib || exit 1
+          test -d proprietary/lib64 || exit 1
+          test -d proprietary/vendor || exit 1
+
+      - name: Validate Trustonic Stack
+        run: |
+          test -f proprietary/vendor/bin/hw/vendor.trustonic.tee@1.0-service || exit 1
+          test -f proprietary/vendor/lib64/vendor.trustonic.tee@1.0.so || exit 1
+          test -f proprietary/vendor/lib64/vendor.trustonic.teeregistry@1.0.so || exit 1
+
+      - name: Validate Fingerprint and Keymaster Stack
+        run: |
+          test -f proprietary/vendor/bin/hw/android.hardware.keymaster@3.0-service || exit 1
+          test -f proprietary/vendor/bin/hw/android.hardware.biometrics.fingerprint@2.1-service || exit 1
+          test -f proprietary/vendor/lib64/hw/libMcGatekeeper.so || exit 1
+          test -f proprietary/vendor/lib64/hw/libMcTeeKeymaster.so || exit 1
+
+      - name: Validate Graphics Stack
+        run: |
+          test -f proprietary/vendor/lib64/hw/gralloc.mt6765.so || exit 1
+          test -f proprietary/vendor/lib64/hw/hwcomposer.mt6765.so || exit 1
+
+      - name: Validate Audio Stack
+        run: |
+          find proprietary -iname "*audio*" | grep . || exit 1
+
+      - name: Validate Camera Stack
+        run: |
+          find proprietary -iname "*camera*" | grep . || exit 1
+
+      - name: Validate Vendor Makefile References
+        run: |
+          grep -q "PRODUCT_COPY_FILES" OP4C7D-vendor.mk || exit 1
+
+      - name: Print Success
+        run: |
+          echo "Vendor tree validation passed successfully."

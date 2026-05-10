@@ -479,7 +479,7 @@ PRODUCT_COPY_FILES += \
     vendor/oppo/OP4C7D/proprietary/vendor/etc/audio_param/RingbackVolUI_ParamUnitDesc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_param/RingbackVolUI_ParamUnitDesc.xml \
     vendor/oppo/OP4C7D/proprietary/vendor/etc/audio_param/RingbackVol_AudioParam.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_param/RingbackVol_AudioParam.xml \
     vendor/oppo/OP4C7D/proprietary/vendor/etc/audio_param/RingbackVol_ParamUnitDesc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_param/RingbackVol_ParamUnitDesc.xml \
-    vendor/oppo/OP4C7D/proprietary/vendor/etc/audio_param/SoundEnhancement_AudioParam.bak:$(TARGET_COPY_OUT_VENDOR)/etc/audio_param/SoundEnhancement_AudioParam.xml \
+    vendor/oppo/OP4C7D/proprietary/vendor/etc/audio_param/SoundEnhancement_AudioParam.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_param/SoundEnhancement_AudioParam.xml \
     vendor/oppo/OP4C7D/proprietary/vendor/etc/audio_param/SoundEnhancement_ParamUnitDesc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_param/SoundEnhancement_ParamUnitDesc.xml \
     vendor/oppo/OP4C7D/proprietary/vendor/etc/audio_param/SpeechDMNR_AudioParam.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_param/SpeechDMNR_AudioParam.xml \
     vendor/oppo/OP4C7D/proprietary/vendor/etc/audio_param/SpeechDMNR_ParamUnitDesc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_param/SpeechDMNR_ParamUnitDesc.xml \
